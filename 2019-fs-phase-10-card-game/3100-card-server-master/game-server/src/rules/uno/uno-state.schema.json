@@ -1,0 +1,216 @@
+{
+    "definitions": {
+        "IUnoState": {
+            "type": "object",
+            "properties": {
+                "stage": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "object",
+                    "properties": {
+                        "players": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                    "hand": {
+                                        "type": "object",
+                                        "properties": {
+                                            "cards": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "color": {
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "red",
+                                                                        "yellow",
+                                                                        "green",
+                                                                        "blue"
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "wild"
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        },
+                                                        "face": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "0",
+                                                                "1",
+                                                                "2",
+                                                                "3",
+                                                                "4",
+                                                                "5",
+                                                                "6",
+                                                                "7",
+                                                                "8",
+                                                                "9",
+                                                                "reverse",
+                                                                "skip",
+                                                                "drawTwo",
+                                                                "drawFour",
+                                                                "wild"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "color",
+                                                        "face"
+                                                    ],
+                                                    "additionalProperties": false
+                                                }
+                                            }
+                                        },
+                                        "required": [
+                                            "cards"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "required": [
+                                    "hand"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "global": {
+                            "type": "object",
+                            "properties": {
+                                "activePlayer": {
+                                    "type": "number"
+                                },
+                                "deck": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "color": {
+                                                "anyOf": [
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "red",
+                                                            "yellow",
+                                                            "green",
+                                                            "blue"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "wild"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            "face": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "0",
+                                                    "1",
+                                                    "2",
+                                                    "3",
+                                                    "4",
+                                                    "5",
+                                                    "6",
+                                                    "7",
+                                                    "8",
+                                                    "9",
+                                                    "reverse",
+                                                    "skip",
+                                                    "drawTwo",
+                                                    "drawFour",
+                                                    "wild"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "color",
+                                            "face"
+                                        ],
+                                        "additionalProperties": false
+                                    }
+                                },
+                                "topColor": {
+                                    "type": "string",
+                                    "enum": [
+                                        "red",
+                                        "yellow",
+                                        "green",
+                                        "blue"
+                                    ]
+                                },
+                                "topFace": {
+                                    "type": "string",
+                                    "enum": [
+                                        "0",
+                                        "1",
+                                        "2",
+                                        "3",
+                                        "4",
+                                        "5",
+                                        "6",
+                                        "7",
+                                        "8",
+                                        "9",
+                                        "reverse",
+                                        "skip",
+                                        "drawTwo",
+                                        "drawFour",
+                                        "wild"
+                                    ]
+                                },
+                                "options": {
+                                    "type": "object",
+                                    "properties": {
+                                        "decks": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "decks"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            },
+                            "required": [
+                                "activePlayer",
+                                "deck",
+                                "topColor",
+                                "topFace",
+                                "options"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "players",
+                        "global"
+                    ],
+                    "additionalProperties": false
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "stage",
+                "state"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "$ref": "#/definitions/IUnoState"
+}

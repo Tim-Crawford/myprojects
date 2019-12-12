@@ -1,0 +1,5 @@
+This database uses XAMPP.
+Put minecraft in \xampp\mysql\data.
+Put minecraft_interface in \xampp\htdocs.
+Put http://localhost/minecraft_interface/files/functionlist.html
+into the browser to access the database.

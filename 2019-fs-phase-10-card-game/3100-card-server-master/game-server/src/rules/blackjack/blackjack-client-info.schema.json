@@ -1,0 +1,21 @@
+{
+    "definitions": {
+        "IBlackjackClientInfo": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "money": {
+                    "type": "number"
+                }
+            },
+            "required": [
+                "name",
+                "money"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "$ref": "#/definitions/IBlackjackClientInfo"
+}

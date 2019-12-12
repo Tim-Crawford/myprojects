@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "importHelpers": true,
+    "sourceMap": true,
+    "outDir": "build",
+    "resolveJsonModule": true,
+
+    "alwaysStrict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "strictNullChecks": true
+  },
+  "include": [
+    "../definitions/**/*",
+    "src/**/*",
+    "__tests__/**/*"
+  ],
+  "references": []
+}

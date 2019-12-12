@@ -1,0 +1,147 @@
+{
+    "definitions": {
+        "IBlackjackState": {
+            "type": "object",
+            "properties": {
+                "stage": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "object",
+                    "properties": {
+                        "players": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "properties": {
+                                    "hands": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "cards": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "$ref": "#/definitions/ICard"
+                                                    }
+                                                },
+                                                "bet": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "required": [
+                                                "cards",
+                                                "bet"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    },
+                                    "initialBet": {
+                                        "type": "number"
+                                    }
+                                },
+                                "required": [
+                                    "hands",
+                                    "initialBet"
+                                ],
+                                "additionalProperties": false
+                            }
+                        },
+                        "global": {
+                            "type": "object",
+                            "properties": {
+                                "activePlayer": {
+                                    "type": "number"
+                                },
+                                "deck": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ICard"
+                                    }
+                                },
+                                "options": {
+                                    "type": "object",
+                                    "properties": {
+                                        "decks": {
+                                            "type": "number"
+                                        }
+                                    },
+                                    "required": [
+                                        "decks"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            },
+                            "required": [
+                                "activePlayer",
+                                "deck",
+                                "options"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "players",
+                        "global"
+                    ],
+                    "additionalProperties": false
+                },
+                "messages": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "stage",
+                "state"
+            ],
+            "additionalProperties": false
+        },
+        "ICard": {
+            "type": "object",
+            "properties": {
+                "suit": {
+                    "$ref": "#/definitions/CardSuit"
+                },
+                "face": {
+                    "$ref": "#/definitions/CardFace"
+                }
+            },
+            "required": [
+                "suit",
+                "face"
+            ],
+            "additionalProperties": false
+        },
+        "CardSuit": {
+            "type": "string",
+            "enum": [
+                "spades",
+                "diamonds",
+                "hearts",
+                "clubs"
+            ]
+        },
+        "CardFace": {
+            "type": "string",
+            "enum": [
+                "A",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "J",
+                "Q",
+                "K"
+            ]
+        }
+    },
+    "$ref": "#/definitions/IBlackjackState"
+}

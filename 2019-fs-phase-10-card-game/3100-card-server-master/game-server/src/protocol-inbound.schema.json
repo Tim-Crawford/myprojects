@@ -1,0 +1,116 @@
+{
+    "definitions": {
+        "InboundData": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "client-info"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "clientInfo": {}
+                            },
+                            "required": [
+                                "clientInfo"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "game-state"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "state": {}
+                            },
+                            "required": [
+                                "state"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "game-finished"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "client-list"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "random-data"
+                            ]
+                        },
+                        "data": {}
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                }
+            ]
+        }
+    },
+    "$ref": "#/definitions/InboundData"
+}

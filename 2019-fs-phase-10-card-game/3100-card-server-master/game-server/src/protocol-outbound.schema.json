@@ -1,0 +1,277 @@
+{
+    "definitions": {
+        "OutboundData": {
+            "anyOf": [
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "whois"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "id"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "client-info"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "clientInfo": {},
+                                "isLobbyLeader": {
+                                    "type": "boolean"
+                                }
+                            },
+                            "required": [
+                                "id",
+                                "clientInfo",
+                                "isLobbyLeader"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "game-state"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "state": {},
+                                "lobbyLeader": {
+                                    "type": "number"
+                                }
+                            },
+                            "required": [
+                                "state",
+                                "lobbyLeader"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "game-finished"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "disconnect"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "client-list"
+                            ]
+                        },
+                        "data": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "type": "number"
+                                    },
+                                    "state": {
+                                        "type": "string"
+                                    },
+                                    "clientInfo": {},
+                                    "isLobbyLeader": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "required": [
+                                    "id",
+                                    "state",
+                                    "clientInfo",
+                                    "isLobbyLeader"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "client-disconnected"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "number"
+                                },
+                                "clientInfo": {}
+                            },
+                            "required": [
+                                "id",
+                                "clientInfo"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "random-data"
+                            ]
+                        },
+                        "data": {}
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "messageType": {
+                            "type": "string",
+                            "enum": [
+                                "error"
+                            ]
+                        },
+                        "data": {
+                            "type": "object",
+                            "properties": {
+                                "reason": {
+                                    "$ref": "#/definitions/ErrorReason"
+                                },
+                                "message": {
+                                    "type": "string"
+                                },
+                                "state": {}
+                            },
+                            "required": [
+                                "reason",
+                                "state"
+                            ],
+                            "additionalProperties": false
+                        }
+                    },
+                    "required": [
+                        "messageType",
+                        "data"
+                    ],
+                    "additionalProperties": false
+                }
+            ]
+        },
+        "ErrorReason": {
+            "type": "string",
+            "enum": [
+                "invalid message format",
+                "invalid state format",
+                "invalid client information format",
+                "game already running",
+                "not enough clients",
+                "too many clients",
+                "clients not ready",
+                "state rejected",
+                "unexpected message",
+                "server error"
+            ]
+        }
+    },
+    "$ref": "#/definitions/OutboundData"
+}

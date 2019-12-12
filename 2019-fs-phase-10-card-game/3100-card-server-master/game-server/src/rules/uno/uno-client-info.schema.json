@@ -1,0 +1,17 @@
+{
+    "definitions": {
+        "IUnoClientInfo": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "additionalProperties": false
+        }
+    },
+    "$ref": "#/definitions/IUnoClientInfo"
+}
